@@ -16,6 +16,7 @@ Three.js是基于MIT协议进行发布的，因此使用和发布都非常自由
 使用正交投影照相机获得的结果就像我们在数学几何学课上老师教我们画的，对于在三维空间内平行的线，投影到二维空间中也一定是平行的；\<br>
 而透视投影照相机获得的结果是类似人眼在真是世界中看到的“近大远小”的效果。
 ![image](https://github.com/ChengYiFan/three.js/raw/master/img/camera.jpg)
+
 ######几何形状
 * chpt-3-1-Geometry.html
 * chpt-3-2-Geometry.html
