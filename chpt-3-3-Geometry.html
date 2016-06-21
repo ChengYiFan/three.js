@@ -25,35 +25,33 @@
 			camera.lookAt(new THREE.Vector3(0, 0, 0));
 			scene.add(camera);
 
-			//4.圆形（CircleGeometry）可以创建圆形或者扇形，其构造函数是：THREE.CircleGeometry(radius, segments, thetaStart, thetaLength)
-			var cube = new THREE.Mesh(new THREE.CircleGeometry(1.5, 20, Math.PI / 3, Math.PI / 3 * 4),
+			//7.圆环面（TorusGeometry）就是甜甜圈的形状，其构造函数是：THREE.TorusGeometry(radius, tube, radialSegments, tubularSegments, arc)
+			var cube = new THREE.Mesh(new THREE.TorusGeometry(1.3, 0.2, 12, 18),
 			        new THREE.MeshBasicMaterial({
 			            color: 0xff0000,
 			            wireframe: true
 			        })
 			);
 			scene.add(cube);
-
-			//5.圆柱体（CylinderGeometry）的构造函数是：THREE.CylinderGeometry(radiusTop,radiusBottom,height, radiusSegments, heightSegments, openEnded)
-			var cube1 = new THREE.Mesh(new THREE.CylinderGeometry(0.5,0.5,1,18,3),
-				new THREE.MeshBasicMaterial({
-					color:0xff00ff,
-					wireframe: true
-				})
+			//部分圆环面
+			var cube1 = new THREE.Mesh(new THREE.TorusGeometry(1, 0.08, 10, 18, Math.PI / 3 * 2),
+			        new THREE.MeshBasicMaterial({
+			            color: 0x00ffff,
+			            wireframe: true
+			        })
 			);
 			scene.add(cube1);
 
-			//6.正四面体（TetrahedronGeometry)、正八面体(OctahedronGeometry)、正二十面体（IcosahedronGeometry)的构造函数较为类似，分别为
-			//THREE.TetrahedronGeometry(radius,detail)
-			//THREE.OctahedronGeometry(radius,detail)
-			//THREE.IcosahedronGeometry(radius,detail)
-			var cube2 = new THREE.Mesh(new THREE.IcosahedronGeometry(1.2),
+			//8.圆环结（TorusKnotGeometry）就是打了结的甜甜圈，其构造参数为：THREE.TorusKnotGeometry(radius, tube, radialSegments, tubularSegments, p, q, heightScale)
+			var cube2 = new THREE.Mesh(new THREE.TorusKnotGeometry(0.5,0.1,36,8),
 				new THREE.MeshBasicMaterial({
-					color:0x00ffff,
-					wireframe: true
-				})
+						color:0x178fe6,
+						wireframe: true
+					})
 			);
-			scene.add(cube2);
+			scene.add(cube2);	
+
+
 			//在定义了场景中的物体，设置好的照相机之后，渲染器就知道如何渲染出二维的结果了。这时候，我们只需要调用渲染器的渲染函数，就能使其渲染一次了。
 			renderer.render(scene, camera);
 		}
