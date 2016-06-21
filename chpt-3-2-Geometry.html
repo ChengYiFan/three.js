@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>几何形状Geometry</title>
+	<script type="text/javascript" src="js/three.js"></script>
+</head>
+<body onload="init()">
+	<script>
+		function init(){
+			//而如果想要Three.js生成Canvas元素，在HTML中就不需要定义Canvas元素，在JavaScript代码中可以这样写：
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize(800, 600);
+			document.getElementsByTagName('body')[0].appendChild(renderer.domElement);
+
+			//设置渲染器的背景色
+			renderer.setClearColor(0x000000);
+
+			//创建场景
+			var scene = new THREE.Scene();
+			//正交投影照相机（Orthographic Camera）设置起来较为直观，它的构造函数是：THREE.OrthographicCamera(left, right, top, bottom, near, far)
+			//var camera = new THREE.OrthographicCamera(-1, 3, 1.5, -1.5, 1, 10);
+			var camera = new THREE.OrthographicCamera(-2, 2, 1.5, -1.5, 1, 10);
+			camera.position.set(3, -3, 6);
+			camera.lookAt(new THREE.Vector3(0, 0, 0));
+			scene.add(camera);
+
+			//4.圆形（CircleGeometry）可以创建圆形或者扇形，其构造函数是：THREE.CircleGeometry(radius, segments, thetaStart, thetaLength)
+		}
+	</script>
+</body>
+</html>

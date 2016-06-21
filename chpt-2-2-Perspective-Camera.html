@@ -26,7 +26,7 @@
 			//透视投影照相机（Perspective Camera）的构造函数是：THREE.PerspectiveCamera(fov, aspect, near, far)
 			var camera = new THREE.PerspectiveCamera(45, 400 / 300, 1, 10);
 			camera.position.set(0, 0, 5);
-			camera.lookAt(new THREE.Vector3(0, 0, 0));
+			//camera.lookAt(new THREE.Vector3(0, 0, 0));
 			scene.add(camera);
 			//创建正方体，我们要创建一个x、y、z方向长度分别为1、2、3的长方体，并将其设置为红色。
 			var cube = new THREE.Mesh(new THREE.CubeGeometry(1, 1, 1),
