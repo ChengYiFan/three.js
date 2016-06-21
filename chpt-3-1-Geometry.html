@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>几何形状Geometry</title>
+	<script type="text/javascript" src="js/three.js"></script>
+</head>
+<body onload="init()">
+
+
+
+	<script>
+		function init(){
+
+			//而如果想要Three.js生成Canvas元素，在HTML中就不需要定义Canvas元素，在JavaScript代码中可以这样写：
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize(400, 300);
+			document.getElementsByTagName('body')[0].appendChild(renderer.domElement);
+
+			//设置渲染器的背景色
+			renderer.setClearColor(0x000000);
+
+			//创建场景
+			var scene = new THREE.Scene();
+			//透视投影照相机（Perspective Camera）的构造函数是：THREE.PerspectiveCamera(fov, aspect, near, far)
+			var camera = new THREE.PerspectiveCamera(45, 400 / 300, 1, 10);
+			camera.position.set(0, 0, 5);
+			camera.lookAt(new THREE.Vector3(0, 0, 0));
+			scene.add(camera);
+
+			//1.立方体CubeGeometry），但它其实是长方体，也就是长宽高可以设置为不同的值。其构造函数是：THREE.CubeGeometry(width, height, depth, widthSegments, heightSegments, depthSegments)
+			
+			var cube = new THREE.Mesh(new THREE.CubeGeometry(1, 2, 3),
+			        new THREE.MeshBasicMaterial({
+			            color: 0xff0000,
+			            wireframe: true
+			        })
+			);
+			scene.add(cube);
+
+			//在定义了场景中的物体，设置好的照相机之后，渲染器就知道如何渲染出二维的结果了。这时候，我们只需要调用渲染器的渲染函数，就能使其渲染一次了。
+			renderer.render(scene, camera);
+
+
+			
+		}
+	</script>
+</body>
+</html>

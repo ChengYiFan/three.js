@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正交投影照相机（Orthographic Camera）</title>
+	<script type="text/javascript" src="js/three.js"></script>
+</head>
+<body onload="init()">
+
+
+
+	<script>
+		function init(){
+			
+
+			//而如果想要Three.js生成Canvas元素，在HTML中就不需要定义Canvas元素，在JavaScript代码中可以这样写：
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize(400, 300);
+			document.getElementsByTagName('body')[0].appendChild(renderer.domElement);
+
+			//设置渲染器的背景色
+			renderer.setClearColor(0x000000);
+
+			//创建场景
+			var scene = new THREE.Scene();
+			//正交投影照相机（Orthographic Camera）设置起来较为直观，它的构造函数是：THREE.OrthographicCamera(left, right, top, bottom, near, far)
+			//var camera = new THREE.OrthographicCamera(-1, 3, 1.5, -1.5, 1, 10);
+			var camera = new THREE.OrthographicCamera(-2, 2, 1.5, -1.5, 1, 10);
+			camera.position.set(4, -3, 5);
+			camera.lookAt(new THREE.Vector3(0, 0, 0));
+			scene.add(camera);
+			//创建正方体，我们要创建一个x、y、z方向长度分别为1、2、3的长方体，并将其设置为红色。
+			var cube = new THREE.Mesh(new THREE.CubeGeometry(1, 1, 1),
+			        new THREE.MeshBasicMaterial({
+			            color: 0xff0000,
+			            wireframe: true
+			        })
+			);
+			scene.add(cube);
+
+			//在定义了场景中的物体，设置好的照相机之后，渲染器就知道如何渲染出二维的结果了。这时候，我们只需要调用渲染器的渲染函数，就能使其渲染一次了。
+			renderer.render(scene, camera);
+
+
+			
+		}
+	</script>
+</body>
+</html>
