@@ -24,19 +24,23 @@ Three.js是基于MIT协议进行发布的，因此使用和发布都非常自由
 
 WebGL需要程序员指定每个顶点的位置，而在Three.js中，可以通过指定一些特征来创建几何形状，例如使用半径创建一个球体，从而省去程序员一个个指定顶点的工作量。
 
-* chpt-3-1-Geometry.html   练习立方体、平面、球体
+* chpt-3-1-Geometry.html   如图chpt-3-1 练习立方体、平面、球体
+* chpt-3-2-Geometry.html   练习圆形、圆柱体、正十二面体
+* chpt-3-3-Geometry.html   练习圆环面、圆环结  
+* chpt-3-4-Geometry.html   练习自定义形状。
 
+chpt-3-1
 ![image](https://github.com/ChengYiFan/three.js/raw/master/img/geometry.png)
 
-* chpt-3-2-Geometry.html   练习圆形、圆柱体、正十二面体
+chpt-3-2
 
 ![image](https://github.com/ChengYiFan/three.js/raw/master/img/geometry2.png)
 
-* chpt-3-3-Geometry.html   练习圆环面、圆环结
+chpt-3-3
 
 ![image](https://github.com/ChengYiFan/three.js/raw/master/img/geometry3.png)
 
-* chpt-3-4-Geometry.html  练习自定义形状。
+chpt-3-4
 
 ![image](https://github.com/ChengYiFan/three.js/raw/master/img/geometry4.png)
 
@@ -45,6 +49,8 @@ WebGL需要程序员指定每个顶点的位置，而在Three.js中，可以通�
 
 本章将介绍基本材质、两种基于光照模型的材质，以及使用法向量作为材质。除此之外，本章还将介绍如何使用图像作为材质。
 
-* chpt-4-1-Material.html 练习基本材质
-![image](https://github.com/ChengYiFan/three.js/raw/master/img/material1.png)
+* chpt-4-1-Material.html             练习基本材质
+* chpt-4-2-MeshLambertMaterial.html  练习Lambert材质
+* chpt-4-3-MeshPhongMaterial.html    练习Phong材质
+* chpt-4-4-MeshNormalMaterial.html   练习法向材质
 
