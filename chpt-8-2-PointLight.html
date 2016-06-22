@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>光与影—环境光</title>
+	<title>光与影-点光源</title>
 	<script type="text/javascript" src="js/three.js"></script>
 </head>
 <body onload="init()">
@@ -21,8 +21,9 @@
 			camera.position.set(3, 3, 6);
 			camera.lookAt(new THREE.Vector3(0, 0, 0));
 			scene.add(camera);
-			//创建环境光环境光是指场景整体的光照效果，是由于场景内若干光源的多次反射形成的亮度一致的效果，通常用来为整个场景指定一个基础亮度。因此，环境光没有明确的光源位置，在各处形成的亮度也是一致的。在设置环境光时，只需要指定光的颜色：THREE.AmbientLight(hex)
-			light = new THREE.AmbientLight(0xffffff);
+			//创建点光源
+			light = new THREE.PointLight(0xffffff, 2, 100);
+			light.position.set(5, 9, 6);
 			scene.add(light);
 
 			//但是，如果此时场景中没有物体，只添加了这个环境光，那么渲染的结果仍然是一片黑。所以，我们添加两个长方体看下效果：
@@ -37,5 +38,6 @@
 			renderer.render(scene, camera);
 		}
 	</script>
+	
 </body>
 </html>

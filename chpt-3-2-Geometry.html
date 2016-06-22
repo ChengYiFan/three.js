@@ -26,12 +26,13 @@
 			scene.add(camera);
 
 			//4.圆形（CircleGeometry）可以创建圆形或者扇形，其构造函数是：THREE.CircleGeometry(radius, segments, thetaStart, thetaLength)
-			var cube = new THREE.Mesh(new THREE.CircleGeometry(1.5, 20, Math.PI / 3, Math.PI / 3 * 4),
+			var cube = new THREE.Mesh(new THREE.CircleGeometry(1.2, 20, Math.PI / 3, Math.PI / 3 * 4),
 			        new THREE.MeshBasicMaterial({
 			            color: 0xff0000,
 			            wireframe: true
 			        })
 			);
+			cube.position.x = -0.9;
 			scene.add(cube);
 
 			//5.圆柱体（CylinderGeometry）的构造函数是：THREE.CylinderGeometry(radiusTop,radiusBottom,height, radiusSegments, heightSegments, openEnded)
@@ -41,18 +42,22 @@
 					wireframe: true
 				})
 			);
+			cube1.position.x = 1.5;
+			cube1.position.y = -1;
 			scene.add(cube1);
 
 			//6.正四面体（TetrahedronGeometry)、正八面体(OctahedronGeometry)、正二十面体（IcosahedronGeometry)的构造函数较为类似，分别为
 			//THREE.TetrahedronGeometry(radius,detail)
 			//THREE.OctahedronGeometry(radius,detail)
 			//THREE.IcosahedronGeometry(radius,detail)
-			var cube2 = new THREE.Mesh(new THREE.IcosahedronGeometry(1.2),
+			var cube2 = new THREE.Mesh(new THREE.IcosahedronGeometry(0.7),
 				new THREE.MeshBasicMaterial({
 					color:0x00ffff,
 					wireframe: true
 				})
 			);
+			cube2.position.x = 0.5;
+			cube2.position.y = 0.4;
 			scene.add(cube2);
 			//在定义了场景中的物体，设置好的照相机之后，渲染器就知道如何渲染出二维的结果了。这时候，我们只需要调用渲染器的渲染函数，就能使其渲染一次了。
 			renderer.render(scene, camera);

@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>光与影—环境光</title>
+	<title>光与影-聚光灯</title>
 	<script type="text/javascript" src="js/three.js"></script>
 </head>
 <body onload="init()">
 	<script>
 		function init(){
-			var renderer, scene, camera, light;
+			var renderer, sence, camera, light;
 			renderer = new THREE.WebGLRenderer();
 			renderer.setSize(800, 600);
 			document.getElementsByTagName('body')[0].appendChild(renderer.domElement);
@@ -21,8 +21,11 @@
 			camera.position.set(3, 3, 6);
 			camera.lookAt(new THREE.Vector3(0, 0, 0));
 			scene.add(camera);
-			//创建环境光环境光是指场景整体的光照效果，是由于场景内若干光源的多次反射形成的亮度一致的效果，通常用来为整个场景指定一个基础亮度。因此，环境光没有明确的光源位置，在各处形成的亮度也是一致的。在设置环境光时，只需要指定光的颜色：THREE.AmbientLight(hex)
-			light = new THREE.AmbientLight(0xffffff);
+			//我们都知道，太阳光常常被看作平行光，这是因为相对地球上物体的尺度而言，太阳离我们的距离足够远。对于任意平行的平面，平行光照射的亮度都是相同的，而与平面所在位置无关。
+			//平行光的构造函数是：THREE.DirectionalLight(hex, intensity)其中，hex是光源十六进制的颜色值；intensity是亮度，缺省值为1，表示100%亮度。
+			//此外，对于平行光而言，设置光源位置尤为重要。
+			light = new THREE.DirectionalLight();;
+			light.position.set(2, 5, 3);
 			scene.add(light);
 
 			//但是，如果此时场景中没有物体，只添加了这个环境光，那么渲染的结果仍然是一片黑。所以，我们添加两个长方体看下效果：
