@@ -5,11 +5,11 @@ Three.js封装了底层的图形接口，使程序员能够在无需掌握繁冗
 ######使用协议
 Three.js是基于MIT协议进行发布的，因此使用和发布都非常自由。
 
-######Hello, World
+######第一章 Hello, World
 * chpt-1-1-helloWorld.html  
 练习了如何引用Three.js, 以及渲染器（Renderer)、场景(Scene)、照相机(Camera)的创建和使用，以及如何创建一个长方体。
 
-######照相机（Camera)
+######第二章 照相机（Camera)
 * chpt-2-1-Orchographic-camera.html
 * chpt-2-2-Perspective-Camera.html 
 
@@ -18,7 +18,7 @@ Three.js是基于MIT协议进行发布的，因此使用和发布都非常自由
 二者之间的区别在于：使用正交投影照相机获得的结果就像我们在数学几何学课上老师教我们画的，对于在三维空间内平行的线，投影到二维空间中也一定是平行的,如下图(b)而透视投影照相机获得的结果是类似人眼在真是世界中看到的“近大远小”的效果,如下图(a)。
 ![image](https://github.com/ChengYiFan/three.js/raw/master/img/camera.jpg)
 
-######几何形状
+######第三章 几何形状
 在创建物体时，需要传入两个参数，一个是几何形状(Geometry)，另一个是材质(Material)。几何形状(Geometry)最主要的功能是储存了一个物体的顶点信息。
 
 WebGL需要程序员指定每个顶点的位置，而在Three.js中，可以通过指定一些特征来创建几何形状，例如使用半径创建一个球体，从而省去程序员一个个指定顶点的工作量。
@@ -34,6 +34,11 @@ WebGL需要程序员指定每个顶点的位置，而在Three.js中，可以通�
 
 * chpt-3-4-Geometry.html  练习自定义形状。
 ![image](https://github.com/ChengYiFan/three.js/raw/master/img/geometry4.png)
+
+######第四章 材质
+材质（Material）是独立于物体顶点信息之外的与渲染效果相关的属性。通过设置材质可以改变物体的颜色、纹理贴图、光照模式等。
+
+本章将介绍基本材质、两种基于光照模型的材质，以及使用法向量作为材质。除此之外，本章还将介绍如何使用图像作为材质。
 
 * chpt-4-1-Material.html 练习基本材质
 ![image](https://github.com/ChengYiFan/three.js/raw/master/img/material1.png)
