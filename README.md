@@ -34,3 +34,7 @@ WebGL需要程序员指定每个顶点的位置，而在Three.js中，可以通�
 
 * chpt-3-4-Geometry.html  练习自定义形状。
 ![image](https://github.com/ChengYiFan/three.js/raw/master/img/geometry4.png)
+
+* chpt-4-1-Material.html 练习基本材质
+![image](https://github.com/ChengYiFan/three.js/raw/master/img/material1.png)
+
