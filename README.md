@@ -35,7 +35,7 @@ WebGL需要程序员指定每个顶点的位置，而在Three.js中，可以通�
 图chpt-3-2
 ![image](https://github.com/ChengYiFan/three.js/raw/master/img/geometry2.png)
 
-图hpt-3-3
+图chpt-3-3
 ![image](https://github.com/ChengYiFan/three.js/raw/master/img/geometry3.png)
 
 图chpt-3-4
@@ -51,3 +51,14 @@ WebGL需要程序员指定每个顶点的位置，而在Three.js中，可以通�
 * chpt-4-3-MeshPhongMaterial.html    练习Phong材质
 * chpt-4-4-MeshNormalMaterial.html   练习法向材质
 
+
+
+
+######第八章 光与影
+图片渲染的丰富效果很大程度上也要归功于光与影的利用。为了使计算机模拟丰富的光照效果，人们提出了几种不同的光源模型（环境光、平行光、点光源、聚光灯等），在不同场合下组合利用，将能达到很好的光照效果。
+
+在Three.js中，光源与阴影的创建和使用是十分方便的。在学会了如何控制光影的基本方法之后，如果能将其灵活应用，将能使场景的渲染效果更加丰富逼真。在本章中，我们将探讨四种常用的光源（环境光、点光源、平行光、聚光灯）和阴影带来的效果，以及如何去创建使用光影。
+
+环境光是指场景整体的光照效果，是由于场景内若干光源的多次反射形成的亮度一致的效果，通常用来为整个场景指定一个基础亮度。因此，环境光没有明确的光源位置，在各处形成的亮度也是一致的。
+
+在设置环境光时，只需要指定光的颜色：THREE.AmbientLight(hex)

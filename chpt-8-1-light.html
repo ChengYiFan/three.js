@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>光与影—环境光</title>
+	<script type="text/javascript" src="js/three.js"></script>
+</head>
+<body onload="init()">
+	<script>
+		function init(){
+			var renderer, scene, camera, light;
+			renderer = new THREE.WebGLRenderer();
+			renderer.setSize(800, 600);
+			document.getElementsByTagName('body')[0].appendChild(renderer.domElement);
+
+			//设置渲染器的背景色
+			renderer.setClearColor(0x000000);
+
+			scene = new THREE.Scene();
+			camera = new THREE.OrthographicCamera(-2, 2, 1.5, -1.5, 1, 10);
+			camera.position.set(3, -3, -6);
+			camera.lookAt(new THREE.Vector3(0, 0, 0));
+			scene.add(camera);
+			//创建环境光
+			light = new THREE.AmbientLight(0xffffff);
+			scene.add(light);
+
+			//但是，如果此时场景中没有物体，只添加了这个环境光，那么渲染的结果仍然是一片黑。所以，我们添加两个长方体看下效果：
+			var greenCube = new THREE.Mesh(new THREE.CubeGeometry(1, 1, 1),new THREE.MeshLambertMaterial({color: 0x00ff00}));
+			greenCube.position.x = -1.2;
+			scene.add(greenCube);
+			var whiteCube = new THREE.Mesh(new THREE.CubeGeometry(1.1, 1.1, 1.1),new THREE.MeshLambertMaterial({color: 0xffffff}));
+			whiteCube.position.x = 1.2;
+			scene.add(whiteCube);
+
+
+			renderer.render(scene, camera);
+		}
+	</script>
+</body>
+</html>
