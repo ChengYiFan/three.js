@@ -21,21 +21,35 @@
 			camera.position.set(3, 3, 6);
 			camera.lookAt(new THREE.Vector3(0, 0, 0));
 			scene.add(camera);
-			//我们都知道，太阳光常常被看作平行光，这是因为相对地球上物体的尺度而言，太阳离我们的距离足够远。对于任意平行的平面，平行光照射的亮度都是相同的，而与平面所在位置无关。
-			//平行光的构造函数是：THREE.DirectionalLight(hex, intensity)其中，hex是光源十六进制的颜色值；intensity是亮度，缺省值为1，表示100%亮度。
-			//此外，对于平行光而言，设置光源位置尤为重要。
-			light = new THREE.DirectionalLight();;
-			light.position.set(2, 5, 3);
-			scene.add(light);
+			
+			var plane = new THREE.Mesh(new THREE.PlaneGeometry(8, 20, 16, 16),
+			        new THREE.MeshLambertMaterial({color: 0xcccccc}));
+			// plane.rotation.x = -Math.PI / 2;
+			// plane.position.y = -1;
+			plane.position.z = -1;
+			scene.add(plane);			
+
 
 			//但是，如果此时场景中没有物体，只添加了这个环境光，那么渲染的结果仍然是一片黑。所以，我们添加两个长方体看下效果：
-			var greenCube = new THREE.Mesh(new THREE.CubeGeometry(1, 1, 1),new THREE.MeshLambertMaterial({color: 0x00ff00}));
+			var greenCube = new THREE.Mesh(new THREE.CubeGeometry(0.5, 0.5, 0.5),new THREE.MeshLambertMaterial({color: 0x00ff00}));
 			greenCube.position.x = 1.2;
 			scene.add(greenCube);
-			var whiteCube = new THREE.Mesh(new THREE.CubeGeometry(1.1, 1.1, 1.1),new THREE.MeshLambertMaterial({color: 0xffffff}));
+			var whiteCube = new THREE.Mesh(new THREE.CubeGeometry(0.5, 0.5, 0.5),new THREE.MeshLambertMaterial({color: 0xffffff}));
 			whiteCube.position.x = -1.2;
 			scene.add(whiteCube);
 
+
+			//聚光灯是一种特殊的点光源，它能够朝着一个方向投射光线。聚光灯投射出的是类似圆锥形的光线，这与我们现实中看到的聚光灯是一致的。
+			/**
+			*其构造函数为：THREE.SpotLight(hex, intensity, distance, angle, exponent)
+			*相比点光源，多了angle和exponent两个参数。angle是聚光灯的张角，缺省值是Math.PI / 3，最大值是Math.PI / 2；
+			*exponent是光强在偏离target的衰减指数（target需要在之后定义，缺省值为(0, 0, 0)），缺省值是10。
+			*/
+			
+			light = new THREE.SpotLight(0xffff00, 1, 100, Math.PI / 6, 25);
+			light.position.set(0, 2, 4.8);
+			light.target = greenCube;
+			scene.add(light);
 
 			renderer.render(scene, camera);
 		}
