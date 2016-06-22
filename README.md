@@ -28,7 +28,11 @@ WebGL需要程序员指定每个顶点的位置，而在Three.js中，可以通�
 
 * chpt-3-1-Geometry.html   练习立方体、平面、球体
 ![image](https://github.com/ChengYiFan/three.js/raw/master/img/geometry.png)
+
 * chpt-3-2-Geometry.html   练习圆形、圆柱体、正十二面体
 ![image](https://github.com/ChengYiFan/three.js/raw/master/img/geometry2.png)
+
 * chpt-3-3-Geometry.html   练习圆环面、圆环结
 ![image](https://github.com/ChengYiFan/three.js/raw/master/img/geometry3.png)
+
+* chpt-3-4-TextGeometry.html  练习文字形状。文字形状需要下载和引用额外的字体库，可以在http://typeface.neocracy.org/下载。
