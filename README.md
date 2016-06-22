@@ -12,13 +12,7 @@ Three.js是基于MIT协议进行发布的，因此使用和发布都非常自由
 ######照相机（Camera)
 * chpt-2-1-Orchographic-camera.html
 * chpt-2-2-Perspective-Camera.html
-
-照相机定义了三维空间到二维屏幕的投影方式，从而实现了三维的场景显示到二维的显示屏上。针对投影方式的不同，照相机分为正交投影照相机和透视投影照相机。
-
-二者之间的区别在于：
-
-使用正交投影照相机获得的结果就像我们在数学几何学课上老师教我们画的，对于在三维空间内平行的线，投影到二维空间中也一定是平行的,如下图(b)
-而透视投影照相机获得的结果是类似人眼在真是世界中看到的“近大远小”的效果,如下图(a)。
+照相机定义了三维空间到二维屏幕的投影方式，从而实现了三维的场景显示到二维的显示屏上。针对投影方式的不同，照相机分为正交投影照相机和透视投影照相机。二者之间的区别在于：使用正交投影照相机获得的结果就像我们在数学几何学课上老师教我们画的，对于在三维空间内平行的线，投影到二维空间中也一定是平行的,如下图(b)而透视投影照相机获得的结果是类似人眼在真是世界中看到的“近大远小”的效果,如下图(a)。
 ![image](https://github.com/ChengYiFan/three.js/raw/master/img/camera.jpg)
 
 ######几何形状
@@ -35,4 +29,5 @@ WebGL需要程序员指定每个顶点的位置，而在Three.js中，可以通�
 * chpt-3-3-Geometry.html   练习圆环面、圆环结
 ![image](https://github.com/ChengYiFan/three.js/raw/master/img/geometry3.png)
 
-* chpt-3-4-TextGeometry.html  练习文字形状。文字形状需要下载和引用额外的字体库，可以在http://typeface.neocracy.org/下载。
+* chpt-3-4-Geometry.html  练习自定义形状。
+![image](https://github.com/ChengYiFan/three.js/raw/master/img/geometry4.png)
