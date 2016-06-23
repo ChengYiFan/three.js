@@ -39,7 +39,9 @@ WebGL需要程序员指定每个顶点的位置，而在Three.js中，可以通�
 * chpt-4-2-MeshLambertMaterial.html  练习Lambert材质
 * chpt-4-3-MeshPhongMaterial.html    练习Phong材质
 * chpt-4-4-MeshNormalMaterial.html   练习法向材质
+* chpt-4-5-texture.html  材质的纹理贴图
 
+######第五章 网格
 
 
 
