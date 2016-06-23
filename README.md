@@ -29,17 +29,6 @@ WebGL需要程序员指定每个顶点的位置，而在Three.js中，可以通�
 * chpt-3-3-Geometry.html   如图chpt-3-3 练习圆环面、圆环结  
 * chpt-3-4-Geometry.html   如图chpt-3-4 练习自定义形状。
 
-图chpt-3-1
-![image](https://github.com/ChengYiFan/three.js/raw/master/img/geometry.png)
-
-图chpt-3-2
-![image](https://github.com/ChengYiFan/three.js/raw/master/img/geometry2.png)
-
-图chpt-3-3
-![image](https://github.com/ChengYiFan/three.js/raw/master/img/geometry3.png)
-
-图chpt-3-4
-![image](https://github.com/ChengYiFan/three.js/raw/master/img/geometry4.png)
 
 ######第四章 材质
 材质（Material）是独立于物体顶点信息之外的与渲染效果相关的属性。通过设置材质可以改变物体的颜色、纹理贴图、光照模式等。
