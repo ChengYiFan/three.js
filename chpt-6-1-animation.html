@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动画</title>
+	<script type="text/javascript" src="js/three.js"></script>
+</head>
+<body onload="init()">
+	<button id="stopBtn" onclick="stop()">Stop</button>
+	<script>
+		var id;
+		function init(){
+			var renderer, camera, scene, light, mesh, geometry, material;
+			renderer = new THREE.WebGLRenderer();
+			renderer.setSize(800, 600);
+			document.getElementsByTagName('body')[0].appendChild(renderer.domElement);
+
+			scene = new THREE.Scene();
+
+			camera = new THREE.OrthographicCamera(-2, 2, 1.5, -1.5, 1, 10);
+			camera.position.set(3, 3, 6);
+			camera.lookAt(new THREE.Vector3(0, 0, 0));
+			scene.add(camera);
+
+
+			//创建平行光
+			light = new THREE.DirectionalLight();
+			light.position.set(2, 5, 3);
+			scene.add(light);
+
+			material = new THREE.MeshLambertMaterial({
+    			color: 0xffff00
+			});
+			//geometry = new THREE.CubeGeometry(0.5, 1, 1.5);
+			geometry = new THREE.SphereGeometry(0.6,20,10);
+
+			//最常用的物体是网格（Mesh），它代表包含点、线、面的几何体，其构造函数是：Mesh(geometry, material)
+			mesh = new THREE.Mesh(geometry, material);
+			scene.add(mesh);
+
+			id = setInterval(draw, 20);
+			function draw() {
+			    mesh.rotation.y = (mesh.rotation.y + 0.01) % (Math.PI * 2);
+			    renderer.render(scene, camera);
+			}
+			
+			renderer.render(scene, camera);
+		}
+		function stop() {
+		    if (id !== null) {
+		        clearInterval(id);
+		        id = null;
+		    }
+		}
+	</script>
+</body>
+</html>
