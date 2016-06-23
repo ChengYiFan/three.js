@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>创建网格</title>
+	<script type="text/javascript" src="js/three.js"></script>
+</head>
+<body onload="init()">
+	<script>
+		function init(){
+			var renderer, camera, scene, light, mesh, geometry, material;
+			renderer = new THREE.WebGLRenderer();
+			renderer.setSize(800, 600);
+			document.getElementsByTagName('body')[0].appendChild(renderer.domElement);
+
+			scene = new THREE.Scene();
+
+			camera = new THREE.OrthographicCamera(-2, 2, 1.5, -1.5, 1, 10);
+			camera.position.set(3, 3, 6);
+			camera.lookAt(new THREE.Vector3(0, 0, 0));
+			scene.add(camera);
+
+
+			//创建平行光
+			light = new THREE.DirectionalLight();
+			light.position.set(2, 5, 3);
+			scene.add(light);
+
+			material = new THREE.MeshLambertMaterial({
+    			color: 0xffff00
+			});
+			geometry = new THREE.CubeGeometry(0.5, 1, 1.5);
+
+			//最常用的物体是网格（Mesh），它代表包含点、线、面的几何体，其构造函数是：Mesh(geometry, material)
+			mesh = new THREE.Mesh(geometry, material);
+			scene.add(mesh);
+
+			//除了在构造函数中指定材质，在网格被创建后，也能对材质进行修改：
+			mesh.material = new THREE.MeshLambertMaterial({
+			    color: 0xff0000 //显示为红色
+			});
+
+			/**
+			*位置、缩放、旋转
+			*位置、缩放、旋转是物体三个常用属性。由于THREE.Mesh基础自THREE.Object3D，因此包含scale、rotation、position三个属性。
+			*它们都是THREE.Vector3实例，因此修改其值的方法是相同的，这里以位置为例。
+			*/
+
+			//THREE.Vector3有x、y、z三个属性，如果只设置其中一个属性，则可以用以下方法：
+			mesh.position.z = 1;
+			//如果需要同时设置多个属性，可以使用以下两种方法：
+			mesh.position.set(1, -0.5, 0);//mesh.position = new THREE.Vector3(1, -0.5, 0);
+
+			//缩放对应的属性是scale，旋转对应的属性是rotation，具体方法与上例相同，分别表示沿x、y、z三轴缩放或旋转。
+			mesh.scale.set(1,0.6,2);
+			mesh.rotation.set(0.1,0.4,0.2);
+			renderer.render(scene, camera);
+		}
+	</script>
+</body>
+</html>
