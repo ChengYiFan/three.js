@@ -9,6 +9,11 @@
 	<button id="stopBtn" onclick="stop()">Stop</button>
 	<script>
 		var id;
+		var requestAnimationFrame = window.requestAnimationFrame 
+        || window.mozRequestAnimationFrame
+        || window.webkitRequestAnimationFrame
+        || window.msRequestAnimationFrame;
+		window.requestAnimationFrame = requestAnimationFrame;
 		function init(){
 			var renderer, camera, scene, light, mesh, geometry, material;
 			renderer = new THREE.WebGLRenderer();
@@ -38,17 +43,23 @@
 			mesh = new THREE.Mesh(geometry, material);
 			scene.add(mesh);
 
-			id = setInterval(draw, 20);
+			//id = setInterval(draw, 20);
+			id = requestAnimationFrame(draw);
+			
+			renderer.render(scene, camera);
+
+			//和setInterval不同的是，由于requestAnimationFrame只请求一帧画面，因此，除了在init函数中需要调用，在被其调用的函数中需要再次调用requestAnimationFrame
 			function draw() {
 			    mesh.rotation.y = (mesh.rotation.y + 0.01) % (Math.PI * 2);
 			    renderer.render(scene, camera);
+			    id = requestAnimationFrame(draw);
 			}
-			
-			renderer.render(scene, camera);
 		}
+
 		function stop() {
 		    if (id !== null) {
-		        clearInterval(id);
+		        //clearInterval(id);
+		        cancelAnimationFrame(id);
 		        id = null;
 		    }
 		}
