@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>材质-Phong材质</title>
+	<script type="text/javascript" src="js/three.js"></script>
+</head>
+<body onload="init()">
+	<script>
+		function init(){
+			var renderer, camera, scene, light;
+			renderer = new THREE.WebGLRenderer();
+			renderer.setSize(800, 600);
+			document.getElementsByTagName('body')[0].appendChild(renderer.domElement);
+
+			scene = new THREE.Scene();
+
+			camera = new THREE.OrthographicCamera(-2, 2, 1.5, -1.5, 1, 10);
+			camera.position.set(3, 3, 6);
+			camera.lookAt(new THREE.Vector3(0, 0, 0));
+			scene.add(camera);
+
+			//创建平行光
+			light = new THREE.DirectionalLight();
+			light.position.set(2, 5, 3);
+			scene.add(light);
+
+			//但是，如果此时场景中没有物体，只添加了这个环境光，那么渲染的结果仍然是一片黑。所以，我们添加两个长方体看下效果：
+
+
+			/**
+			*Phong材质（MeshPhongMaterial）是符合Phong光照模型的材质。和Lambert不同的是，Phong模型考虑了镜面反射的效果，因此对于金属、镜面的表现尤为适合。
+			*/
+
+			//由于漫反射部分与Lambert模型是一致的，因此，如果不指定镜面反射系数，而只设定漫反射，其效果与Lambert是相同的：
+			var greenCube = new THREE.Mesh(new THREE.CubeGeometry(0.4, 0.4, 0.4),new THREE.MeshPhongMaterial({color: 0x00ff00}));
+			greenCube.position.x = 1.3;
+			scene.add(greenCube);
+			//单独使用红色的自发光
+			var whiteCube = new THREE.Mesh(new THREE.CubeGeometry(0.4, 0.4, 0.4),new THREE.MeshPhongMaterial({emissive: 0xff0000}));
+			whiteCube.position.x = -1.3;
+			scene.add(whiteCube);
+			
+			//下面就specular值指定镜面反射系数作说明。首先，我们只使用镜面反射，将高光设为红色，应用于一个球体:
+			var cube3 = new THREE.Mesh(new THREE.SphereGeometry(0.4,20,20),
+					new THREE.MeshPhongMaterial({
+						specular: 0xff0000,
+						//可以通过shininess属性控制光照模型中的n值，当shininess值越大时，高光的光斑越小，默认值为30。我们将其设置为1000时：
+						shininess: 1000
+					})
+			);
+			cube3.position.y = 1;
+			scene.add(cube3);
+
+
+			renderer.render(scene, camera);
+		}
+	</script>
+</body>
+</html>
