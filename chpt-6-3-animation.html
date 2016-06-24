@@ -21,7 +21,8 @@
 			id = null, 
 			stat = null,
 			ballMesh = null,
-			ballRadius = 0.5;
+			ballRadius = 0.5,
+			isMoving = false;
 		function init(){
 			stat = new Stats();
 			stat.domElement.style.position = 'absolute';
@@ -29,7 +30,7 @@
 			stat.domElement.style.top = '0px';
 			document.body.appendChild(stat.domElement);
 
-			renderer = new THREE.WebGLRenderder();
+			renderer = new THREE.WebGLRenderer();
 			renderer.setSize(800, 600);
 			document.getElementsByTagName('body')[0].appendChild(renderer.domElement);
 
@@ -37,8 +38,25 @@
 
 			id = requestAnimationFrame(draw);
 
+			camera = new THREE.OrthographicCamera(-2, 2, 1.5, -1.5, 1, 10);
+			camera.position.set(3, 3, 6);
+			camera.lookAt(new THREE.Vector3(0, 0, 0));
+			scene.add(camera);
+
+			//创建平行光
+			light = new THREE.DirectionalLight();
+			light.position.set(2, 5, 3);
+			scene.add(light);
+
 
 			//添加球面和平面，使弹球位于平面上，平面采用棋盘格图像作为材质
+			//ball
+			ballMesh = new THREE.Mesh(
+				new THREE.SphereGeometry(ballRadius, 16, 8),
+				new THREE.MeshLambertMaterial({color:0x00ffff})
+			);
+			ballMesh.position.y = ballRadius;
+			scene.add(ballMesh);
 		}
 		function draw(){
 			stat.begin();
