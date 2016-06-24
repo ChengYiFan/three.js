@@ -6,7 +6,53 @@
 	<script type="text/javascript" src="js/three.js"></script>
 	<script type="text/javascript" src="js/stats.min.js"></script>
 </head>
-<body>
-	
+<body onload="init()">
+	<script>
+		//实现弹球动画
+		var requestAnimationFrame = window.requestAnimationFrame 
+        || window.mozRequestAnimationFrame
+        || window.webkitRequestAnimationFrame
+        || window.msRequestAnimationFrame;
+		window.requestAnimationFrame = requestAnimationFrame;
+
+		var scene = null, 
+			camera = null, 
+			renderer = null, 
+			id = null, 
+			stat = null,
+			ballMesh = null,
+			ballRadius = 0.5;
+		function init(){
+			stat = new Stats();
+			stat.domElement.style.position = 'absolute';
+			stat.domElement.style.right = '0px';
+			stat.domElement.style.top = '0px';
+			document.body.appendChild(stat.domElement);
+
+			renderer = new THREE.WebGLRenderder();
+			renderer.setSize(800, 600);
+			document.getElementsByTagName('body')[0].appendChild(renderer.domElement);
+
+			scene = new THREE.Scene();
+
+			id = requestAnimationFrame(draw);
+
+
+			//添加球面和平面，使弹球位于平面上，平面采用棋盘格图像作为材质
+		}
+		function draw(){
+			stat.begin();
+			renderer.render(scene, camera);
+			id = requestAnimationFrame(draw);
+			stat.end();
+		}
+		function stop(){
+			if(id !== null){
+				cancelAnimationFrame(id);
+				id = null;
+			}
+		}
+
+	</script>
 </body>
 </html>
