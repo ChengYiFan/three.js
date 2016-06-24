@@ -57,10 +57,22 @@
 			);
 			ballMesh.position.y = ballRadius;
 			scene.add(ballMesh);
+			// plane
+			var texture = THREE.ImageUtils.loadTexture('img/chess.png', {}, function() {
+			    renderer.render(scene, camera);
+			});
+			texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+			texture.repeat.set(4, 4);
+
+			var plane = new THREE.Mesh(new THREE.PlaneGeometry(5, 5),
+	        new THREE.MeshLambertMaterial({map: texture}));
+			plane.rotation.x = -Math.PI / 2;
+	        scene.add(plane);
 		}
 		function draw(){
 			stat.begin();
 			renderer.render(scene, camera);
+			ballMesh.rotation.y = (ballMesh.rotation.y + 0.01) % (Math.PI * 2);
 			id = requestAnimationFrame(draw);
 			stat.end();
 		}
