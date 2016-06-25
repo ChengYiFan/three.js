@@ -60,15 +60,15 @@ NTSC标准的电视FPS是30，PAL标准的电视FPS是25，电影的FPS标准为
 
 
 
-######第八章 光与影
+######第七章 光与影
 图片渲染的丰富效果很大程度上也要归功于光与影的利用。为了使计算机模拟丰富的光照效果，人们提出了几种不同的光源模型（环境光、平行光、点光源、聚光灯等），在不同场合下组合利用，将能达到很好的光照效果。
 
 在Three.js中，光源与阴影的创建和使用是十分方便的。在学会了如何控制光影的基本方法之后，如果能将其灵活应用，将能使场景的渲染效果更加丰富逼真。在本章中，我们将探讨四种常用的光源（环境光、点光源、平行光、聚光灯）和阴影带来的效果，以及如何去创建使用光影。
 
-* chpt-8-1-light.html                练习环境光
-* chpt-8-2-PointLight.html           练习点光源
-* chpt-8-3-DirectionalLight.html     练习平行光
-* chpt-8-4-SpotLight.html            练习聚光灯
-* chpt-8-5-shadowMapEnabled.html     练习阴影
+* chpt-7-1-light.html                练习环境光
+* chpt-7-2-PointLight.html           练习点光源
+* chpt-7-3-DirectionalLight.html     练习平行光
+* chpt-7-4-SpotLight.html            练习聚光灯
+* chpt-7-5-shadowMapEnabled.html     练习阴影
 
 
