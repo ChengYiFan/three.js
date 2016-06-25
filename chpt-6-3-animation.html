@@ -76,7 +76,8 @@
 		}
 		function draw(){
 			stat.begin();
-
+			//球体旋转
+			ballMesh.rotation.y = (ballMesh.rotation.y + 0.01) % (Math.PI * 2);
 			if(isMoving){
 				ballMesh.position.y += v;
 				v += a;
@@ -91,8 +92,6 @@
 					ballMesh.position.y = ballRadius;
 				}
 			}
-
-			ballMesh.rotation.y = (ballMesh.rotation.y + 0.01) % (Math.PI * 2);
 			renderer.render(scene, camera);
 			
 			id = requestAnimationFrame(draw);
